@@ -7,7 +7,7 @@ import css    from '../css/base.css'
 let RouteHandler = Router.RouteHandler
 
 export default class Root extends React.Component {
-  
+
   constructor(props) {
       super(props)
       title: props.string
@@ -24,6 +24,7 @@ export default class Root extends React.Component {
         <head>
           <title>{this.props.title}</title>
           <style dangerouslySetInnerHTML={{ __html: css }} />
+          <meta charSet="utf-8" />
         </head>
         <body className='p2'>
           <Header {...this.props} />

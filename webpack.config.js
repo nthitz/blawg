@@ -1,12 +1,17 @@
+var path = require("path");
+var webpack = require('webpack')
 var StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin')
 var data = require('./data')
 
 module.exports = {
   entry: './entry.js',
+  resolve: {
+    root: [path.join(__dirname, "bower_components")]
+  },
 
   output: {
     filename: 'bundle.js',
-    path: __dirname,
+    path: __dirname + '/deploy',
     libraryTarget: 'umd'
   },
 
@@ -23,7 +28,11 @@ module.exports = {
     },
 
   plugins: [
-    new StaticSiteGeneratorPlugin('bundle.js', data.routes, data)
+    new StaticSiteGeneratorPlugin('bundle.js', data.routes, data),
+    new webpack.NoErrorsPlugin(),
+    new webpack.ResolverPlugin(
+      new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
+    )
   ],
 
   cssnext: {
