@@ -31,7 +31,7 @@ export default class HelloWorldScene extends React.Component {
   }
 
   animate() {
-    this.sceneObjects.sphere.rotation.y += 0.01;
+    this.sceneObjects.sphere.rotation.y += 0.01 * this.props.spinSpeed;
   }
   render() {
     return <div>

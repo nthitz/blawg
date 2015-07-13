@@ -6,7 +6,8 @@ export default class Index extends React.Component {
     return (
       <main>
         <span>Index component</span>
-        <HelloWorldScene dimensions="300" />
+        <HelloWorldScene dimensions="300" spinSpeed="1" />
+        <HelloWorldScene dimensions="500" spinSpeed="2" />
       </main>
     )
   }
