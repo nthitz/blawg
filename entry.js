@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Router from 'react-router'
-import Routes from './Routes.jsx'
+import Routes from './app/Routes.jsx'
 
 if (typeof document !== 'undefined') {
   var initialProps = JSON.parse(document.getElementById('initial-props').innerHTML)
