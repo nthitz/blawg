@@ -65,7 +65,7 @@ ThreeScene.propTypes = {
 };
 
 ThreeScene.defaultProps = {
-  dimensions: 600,
+  dimensions: 400,
   init: function() {},
   animate: function() {}
 };

@@ -18,10 +18,11 @@ export default class HelloWorldScene extends React.Component {
   }
   init() {
     var sphereMaterial = new THREE.MeshNormalMaterial({
+      wireframe: true
     });
 
     this.sceneObjects.sphere = new THREE.Mesh(
-      new THREE.SphereGeometry(50, 4, 4),
+      new THREE.IcosahedronGeometry(100, 1),
       sphereMaterial
     );
 
@@ -31,7 +32,8 @@ export default class HelloWorldScene extends React.Component {
   }
 
   animate() {
-    this.sceneObjects.sphere.rotation.y += 0.01 * this.props.spinSpeed;
+    this.sceneObjects.sphere.rotation.x += 0.01 * this.props.spinSpeedX;
+    this.sceneObjects.sphere.rotation.y += 0.01 * this.props.spinSpeedY;
   }
   render() {
     return <div>
@@ -39,3 +41,11 @@ export default class HelloWorldScene extends React.Component {
     </div>
   }
 }
+HelloWorldScene.propTypes = {
+  spinSpeedX: React.PropTypes.number,
+  spinSpeedY: React.PropTypes.number
+}
+HelloWorldScene.defaultProps = {
+  spinSpeedX: 1,
+  spinSpeedY: 1
+};
