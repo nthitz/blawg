@@ -22,7 +22,7 @@ export default class HelloWorldScene extends React.Component {
     });
 
     this.sceneObjects.sphere = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(100, 1),
+      new THREE.IcosahedronGeometry(100, 2),
       sphereMaterial
     );
 
