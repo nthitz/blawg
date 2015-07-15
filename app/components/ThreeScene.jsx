@@ -1,7 +1,7 @@
 var React = require('react')
 var THREE = require('threejs')
 var _ = require('lodash');
-
+var animationManager = require('../utils/animationManager.js')
 var VIEW_ANGLE = 45, NEAR = 0.1, FAR = 10000;
 
 export default class ThreeScene extends React.Component {
@@ -45,11 +45,11 @@ export default class ThreeScene extends React.Component {
   }
   init() {
     this.props.init();
-    this._animate();
+    animationManager.add(this._animate, this.container);
+    // TODO maybe move to didMount() and then make sure to remove in unmount() !!!
   }
 
   _animate() {
-    requestAnimationFrame(this._animate);
     this.renderer.render(this.scene, this.camera);
 
     this.props.animate();
@@ -66,6 +66,7 @@ ThreeScene.propTypes = {
 
 ThreeScene.defaultProps = {
   dimensions: 400,
+  // TODO rename init, animate. names are confusing because they are callbacks really.
   init: function() {},
   animate: function() {}
 };

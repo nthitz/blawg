@@ -4,6 +4,8 @@ import Router from 'react-router'
 import Header from './Header.jsx'
 import css    from '../css/base.css'
 
+import animationManager from '../utils/animationManager.js'
+
 let RouteHandler = Router.RouteHandler
 
 export default class Root extends React.Component {
@@ -12,7 +14,9 @@ export default class Root extends React.Component {
       super(props)
       title: props.string
   }
-
+  componentDidMount() {
+    animationManager.animate();
+  }
   render () {
 
     let initialProps = {
