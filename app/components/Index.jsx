@@ -1,7 +1,7 @@
 
 import React from 'react'
-import PyramidWireframe from './PyramidWireframe.js'
-import HelloWorldScene from './HelloWorldScene.js'
+import PyramidWireframe from '../posts/PyramidWireframe.js'
+import HelloWorldScene from '../posts/HelloWorldScene.js'
 export default class Index extends React.Component {
   render () {
     return (

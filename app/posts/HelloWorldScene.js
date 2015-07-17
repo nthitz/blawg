@@ -2,7 +2,7 @@ import React from 'react'
 
 var THREE = require('threejs')
 
-import ThreeScene from './ThreeScene.jsx'
+import ThreeScene from '../components/ThreeScene.jsx'
 
 export default class HelloWorldScene extends React.Component {
   constructor(props) {
