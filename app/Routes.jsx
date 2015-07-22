@@ -13,7 +13,7 @@ import generatedRoutes from './generatedRoutes.jsx'
 
 let Routes = (
   <Route handler={Root} path='/'>
-    <DefaultRoute handler={Index} />
+    <Route path='/' handler={Index} />
     <Route path='/about' handler={About} />
     {generatedRoutes}
   </Route>
