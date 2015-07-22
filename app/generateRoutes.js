@@ -2,7 +2,7 @@ var fs = require('fs');
 var _ = require('lodash');
 
 var POST_RELATIVE_DIR = '/posts/';
-
+var OUTPUT_NAME = __dirname + '/generatedRoutes.jsx';
 var postDir = __dirname + POST_RELATIVE_DIR;
 
 var postFiles = fs.readdirSync(postDir);
@@ -13,7 +13,7 @@ var posts = _.map(postFiles, function(postFilename, postIndex) {
   var key = postFilename.replace(/[^a-zA-Z0-9]/g, '');
 
   var route = {
-    path: '/' + key,
+    path: '/' + key + '/',
     componentPath: '.' + POST_RELATIVE_DIR + postFilename,
     key: key,
   }
@@ -27,7 +27,7 @@ function generateRoutes() {
     _.map(posts, function(post) {
       return {
         route: "<Route path='" + post.path + "' handler={" + post.key + "} />",
-        import: "import " + post.key + " from '" + post.componentPath + "'",
+        import: "import " + post.key + " from '" + post.componentPath + "';",
       }
     }),
     function(result, value, key) {
@@ -44,12 +44,16 @@ function generateRoutes() {
 }
 var routes = generateRoutes();
 
-// jsxPaths += "<Route path='/" + path  + "' handler={null} />"
+var file = 'var React = require("react");\n' +
+  'var Route = require("react-router").Route;\n' +
+  routes.import +
+  'module.exports = (<Route>' + routes.route + '</Route>);';
+
+fs.writeFileSync(OUTPUT_NAME, file, 'utf-8');
+
+module.exports = _.map(posts, function(post) {
+  return post.path;
+})
 
 
 
-function slugGenerator(post) {
-
-}
-
-module.exports = routes;

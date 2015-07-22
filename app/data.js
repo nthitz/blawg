@@ -8,13 +8,15 @@ var posts = fs.readdirSync(postDir);
 
 var generateRoutes = require('./generateRoutes.js');
 
-console.log(generateRoutes);
+var defaultRoutes = [
+  '/',
+  '/about',
+];
 
+var routes = defaultRoutes.concat(generateRoutes);
+console.log(routes);
 module.exports = {
   title: 'My Static Site',
-  routes: [
-    '/',
-    '/about'
-  ]
+  routes: routes
 }
 
