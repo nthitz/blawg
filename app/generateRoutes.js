@@ -2,7 +2,7 @@ var fs = require('fs');
 var _ = require('lodash');
 
 var POST_RELATIVE_DIR = '/posts/';
-var OUTPUT_NAME = __dirname + '/generatedRoutes.jsx';
+var OUTPUT_NAME = __dirname + '/generatedRoutes';
 var postDir = __dirname + POST_RELATIVE_DIR;
 
 var postFiles = fs.readdirSync(postDir);
@@ -22,7 +22,7 @@ var posts = _.map(postFiles, function(postFilename, postIndex) {
 })
 
 // provides a map of <Route>s and import statements
-function generateRoutes() {
+function generateRoutesJSX() {
   var Routes = _.reduce(
     _.map(posts, function(post) {
       return {
@@ -41,19 +41,26 @@ function generateRoutes() {
     }
   );
   return Routes;
+
+  var file = 'var React = require("react");\n' +
+    'var Route = require("react-router").Route;\n' +
+    routes.import +
+    'module.exports = (<Route>' + routes.route + '</Route>);';
+
+  fs.writeFileSync(OUTPUT_NAME + '.jsx', file, 'utf-8');
 }
-var routes = generateRoutes();
 
-var file = 'var React = require("react");\n' +
-  'var Route = require("react-router").Route;\n' +
-  routes.import +
-  'module.exports = (<Route>' + routes.route + '</Route>);';
+function generateJSON() {
+  var output = {
+    'posts': posts
+  }
+  var file = 'module.exports = ' + JSON.stringify(output, null, '\t');
+  fs.writeFileSync(OUTPUT_NAME + '.json', file, 'utf-8');
 
-fs.writeFileSync(OUTPUT_NAME, file, 'utf-8');
+}
 
-module.exports = _.map(posts, function(post) {
-  return post.path;
-})
-
+generateRoutesJSX()
+generateJSON()
+module.exports = posts;
 
 

@@ -1,4 +1,4 @@
-
+var _ = require('lodash');
 var cssnext = require('cssnext');
 
 var fs = require('fs');
@@ -13,7 +13,9 @@ var defaultRoutes = [
   '/about',
 ];
 
-var routes = defaultRoutes.concat(generateRoutes);
+var routes = defaultRoutes.concat(_.map(generateRoutes, function(route) {
+  return route.path;
+}));
 console.log(routes);
 module.exports = {
   title: 'My Static Site',
