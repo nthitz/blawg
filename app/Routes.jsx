@@ -5,7 +5,7 @@ import Router from 'react-router'
 import Root from './components/Root.jsx'
 import Index from './components/Index.jsx'
 import About from './components/About.jsx'
-import generatedRoutes from './generatedRoutes.jsx'
+import generatedRoutes from './generatedRoutes/_routes.jsx'
 
 let Route = Router.Route
 let DefaultRoute = Router.DefaultRoute

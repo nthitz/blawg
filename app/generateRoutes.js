@@ -2,7 +2,7 @@ var fs = require('fs');
 var _ = require('lodash');
 
 var POST_RELATIVE_DIR = '/posts/';
-var OUTPUT_NAME = __dirname + '/generatedRoutes';
+var OUTPUT_NAME = __dirname + '/generatedRoutes/_routes';
 var postDir = __dirname + POST_RELATIVE_DIR;
 
 var postFiles = fs.readdirSync(postDir);
@@ -14,16 +14,16 @@ var posts = _.map(postFiles, function(postFilename, postIndex) {
 
   var route = {
     path: '/' + key + '/',
-    componentPath: '.' + POST_RELATIVE_DIR + postFilename,
+    componentPath: '..' + POST_RELATIVE_DIR + postFilename,
     key: key,
   }
 
   return route;
-})
+});
 
 // provides a map of <Route>s and import statements
 function generateRoutesJSX() {
-  var Routes = _.reduce(
+  var routes = _.reduce(
     _.map(posts, function(post) {
       return {
         route: "<Route path='" + post.path + "' handler={" + post.key + "} />",
@@ -40,7 +40,6 @@ function generateRoutesJSX() {
       import: ''
     }
   );
-  return Routes;
 
   var file = 'var React = require("react");\n' +
     'var Route = require("react-router").Route;\n' +
