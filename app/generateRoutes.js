@@ -7,19 +7,32 @@ var postDir = __dirname + POST_RELATIVE_DIR;
 
 var postFiles = fs.readdirSync(postDir);
 
+var FILENAMES = {
+  'component': '/component.js',
+  'detail': '/detail.js',
+}
+
 var posts = _.compact(
   _.map(postFiles, function(postFilename, postIndex) {
     if(postFilename[0] === '.') {
       return;
     }
-    var componentFilename = postDir + postFilename + '/component.js';
+    var componentFilename = postDir + postFilename + FILENAMES.component;
+    var detailFilename = postDir + postFilename + FILENAMES.detail;
+
     var postContents = fs.readFileSync(componentFilename).toString();
 
     var key = postFilename.replace(/[^a-zA-Z0-9]/g, '');
+    var componentPath = '..' + POST_RELATIVE_DIR + postFilename + FILENAMES.component;
+    try {
+      var detail = fs.readFileSync(detailFilename).toString();
+      componentPath = '..' + POST_RELATIVE_DIR + postFilename + FILENAMES.detail;
+    } catch (e) {
 
+    }
     var route = {
       path: '/' + key + '/',
-      componentPath: '..' + POST_RELATIVE_DIR + postFilename + '/component.js',
+      componentPath: componentPath,
       key: key,
     }
 

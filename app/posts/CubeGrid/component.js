@@ -43,9 +43,9 @@ export default class CubeGrid extends React.Component {
 
 
     var cubes = [];
-    _.each(_.range(-3,4), function(xGrid) {
-      _.each(_.range(-3,4), function(yGrid) {
-        _.each(_.range(-8,4), function(zGrid) {
+    _.each(_.range(this.props.x[0], this.props.x[1]), function(xGrid) {
+      _.each(_.range(this.props.y[0], this.props.y[1]), function(yGrid) {
+        _.each(_.range(this.props.z[0], this.props.z[1]), function(zGrid) {
           var cube = new THREE.Mesh(cubeGeom, material);
           cubes.push(cube);
           var multiplier = 20;
@@ -65,11 +65,11 @@ export default class CubeGrid extends React.Component {
 
   animate() {
     _.each(this.cubes, function(cube) {
-      cube.rotation.z += 0.02;
-      cube.rotation.y += 0.01;
+      cube.rotation.z += this.props.spinZ;
+      cube.rotation.y += this.props.spinY;
       // cube.position.x += Math.random() - 0.5;
       // cube.position.y += (Math.random() - 0.5) * 0.01;
-    })
+    }, this)
   }
   render() {
     return <div>
@@ -81,4 +81,9 @@ export default class CubeGrid extends React.Component {
 CubeGrid.propTypes = {
 }
 CubeGrid.defaultProps = {
+  x: [-3, 4],
+  y: [-3, 4],
+  z: [-8, 4],
+  spinZ: 0.02,
+  spinY: 0.01,
 };
