@@ -1,25 +1,33 @@
 
 import React from 'react'
+import _ from 'lodash'
 
 import Post from './Post.jsx'
+import routeData from '../generatedRoutes/_routes.json'
 
-import PyramidWireframe from '../posts/Pyramid/component.js'
-import HelloWorldScene from '../posts/WireBall/component.js'
+import Pyramid from '../posts/Pyramid/component.js'
+import WireBall from '../posts/WireBall/component.js'
 import CubeGrid from '../posts/CubeGrid/component.js'
+
+var postDataMap = {};
+_.each(routeData.posts, function(post) {
+  return postDataMap[post.key] = post;
+})
+console.log(routeData);
 
 export default class Index extends React.Component {
   render () {
     return (
       <main>
         <span>Index component</span>
-        <Post title="CubeGrid">
+        <Post data={postDataMap['CubeGrid']}>
           <CubeGrid />
         </Post>
-        <Post title="Pyramid">
-          <PyramidWireframe />
+        <Post data={postDataMap['Pyramid']}>
+          <Pyramid />
         </Post>
-        <Post title="WireBall">
-          <HelloWorldScene spinSpeedY={2} spinSpeedX={1.5} />
+        <Post data={postDataMap['WireBall']}>
+          <WireBall spinSpeedY={2} spinSpeedX={1.5} />
         </Post>
       </main>
     )
