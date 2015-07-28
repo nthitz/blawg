@@ -32,8 +32,8 @@ export default class CubeGrid extends React.Component {
     this.add(ambientLight);
 
     // directional lighting
-    var directionalLight = new THREE.DirectionalLight(0xffffff);
-    directionalLight.position.set(40, 40, 100)
+    var directionalLight = new THREE.SpotLight(0xffffff);
+    directionalLight.position.set(100, 40, 200)
     this.add(directionalLight);
 
     this.refs.scene.camera.position.z = 200;
