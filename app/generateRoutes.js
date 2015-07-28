@@ -7,19 +7,25 @@ var postDir = __dirname + POST_RELATIVE_DIR;
 
 var postFiles = fs.readdirSync(postDir);
 
-var posts = _.map(postFiles, function(postFilename, postIndex) {
-  var postContents = fs.readFileSync(postDir + postFilename).toString();
-  // return postContents
-  var key = postFilename.replace(/[^a-zA-Z0-9]/g, '');
+var posts = _.compact(
+  _.map(postFiles, function(postFilename, postIndex) {
+    if(postFilename[0] === '.') {
+      return;
+    }
+    var componentFilename = postDir + postFilename + '/component.js';
+    var postContents = fs.readFileSync(componentFilename).toString();
 
-  var route = {
-    path: '/' + key + '/',
-    componentPath: '..' + POST_RELATIVE_DIR + postFilename,
-    key: key,
-  }
+    var key = postFilename.replace(/[^a-zA-Z0-9]/g, '');
 
-  return route;
-});
+    var route = {
+      path: '/' + key + '/',
+      componentPath: '..' + POST_RELATIVE_DIR + postFilename + '/component.js',
+      key: key,
+    }
+
+    return route;
+  })
+);
 
 // provides a map of <Route>s and import statements
 function generateRoutesJSX() {

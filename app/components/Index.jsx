@@ -1,9 +1,9 @@
 
 import React from 'react'
 
-import PyramidWireframe from '../posts/PyramidWireframe.js'
-import HelloWorldScene from '../posts/HelloWorldScene.js'
-import CubeGrid from '../posts/CubeGrid.js'
+import PyramidWireframe from '../posts/PyramidWireframe/component.js'
+import HelloWorldScene from '../posts/HelloWorldScene/component.js'
+import CubeGrid from '../posts/CubeGrid/component.js'
 export default class Index extends React.Component {
   render () {
     return (
