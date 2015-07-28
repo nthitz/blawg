@@ -9,7 +9,6 @@ var VIEW_ANGLE = 45, NEAR = 0.1, FAR = 10000;
 export default class ThreeScene extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props)
 
     this.width = this.props.dimensions
     this.height = this.props.dimensions
