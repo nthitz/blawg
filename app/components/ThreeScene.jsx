@@ -33,10 +33,11 @@ export default class ThreeScene extends React.Component {
 
     this.camera.position.z = 300;
 
-
     //create the scene and add the objects that we created
     this.scene = new THREE.Scene();
     this.scene.add(this.camera);
+
+    this.scene.fog = new THREE.FogExp2( 0xaaaaaa, 0.0025 );
 
     this._animate = this._animate.bind(this)
   }
