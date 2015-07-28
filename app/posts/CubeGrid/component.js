@@ -2,7 +2,7 @@ import React from 'react'
 
 var THREE = require('threejs')
 var _ = require('lodash')
-import ThreePost from '../../components/ThreePost.jsx'
+import ThreeScene from '../../components/ThreeScene.jsx'
 
 export default class CubeGrid extends React.Component {
   constructor(props) {
@@ -73,8 +73,7 @@ export default class CubeGrid extends React.Component {
   }
   render() {
     return <div>
-      <ThreePost ref="scene" init={this.init} animate={this.animate} {...this.props}
-        title="Cube Grid" />
+      <ThreeScene ref="scene" init={this.init} animate={this.animate} {...this.props} />
     </div>
   }
 }

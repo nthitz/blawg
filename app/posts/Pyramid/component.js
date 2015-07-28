@@ -2,7 +2,7 @@ import React from 'react'
 
 var THREE = require('threejs')
 
-import ThreePost from '../../components/ThreePost.jsx'
+import ThreeScene from '../../components/ThreeScene.jsx'
 
 export default class PyramidWireframe extends React.Component {
   constructor(props) {
@@ -48,7 +48,7 @@ export default class PyramidWireframe extends React.Component {
   }
   render() {
     return <div>
-      <ThreePost ref="scene" init={this.init} animate={this.animate} {...this.props} />
+      <ThreeScene ref="scene" init={this.init} animate={this.animate} {...this.props} />
     </div>
   }
 }

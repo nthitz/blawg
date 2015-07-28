@@ -2,7 +2,7 @@ import React from 'react'
 
 var THREE = require('threejs')
 
-import ThreePost from '../../components/ThreePost.jsx'
+import ThreeScene from '../../components/ThreeScene.jsx'
 
 export default class HelloWorldScene extends React.Component {
   constructor(props) {
@@ -37,7 +37,7 @@ export default class HelloWorldScene extends React.Component {
   }
   render() {
     return <div>
-      <ThreePost ref="scene" init={this.init} animate={this.animate} {...this.props} title="Hello World" />
+      <ThreeScene ref="scene" init={this.init} animate={this.animate} {...this.props} title="Hello World" />
     </div>
   }
 }
