@@ -15,10 +15,10 @@ export default class detail extends React.Component {
     return (
       <Post data={postData}>
         <Component />
-        <Component x={oneRange} y={oneRange} z={oneRange} spinY={0} spinZ={0} />
-        <Component y={oneRange} z={oneRange} spinY={0} spinZ={0} />
-        <Component z={oneRange} spinY={0} spinZ={0} />
-        <Component spinY={0} spinZ={0} />
+        <Component x={oneRange} y={oneRange} z={oneRange} spinY={0} spinZ={0} dimensions={200} />
+        <Component y={oneRange} z={oneRange} spinY={0} spinZ={0} dimensions={200} />
+        <Component z={oneRange} spinY={0} spinZ={0} dimensions={200} />
+        <Component spinY={0} spinZ={0} dimensions={200} />
         <Component x={oneRange} y={oneRange} z={oneRange} />
         <Component />
       </Post>
