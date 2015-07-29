@@ -43,7 +43,9 @@ export default class ThreeScene extends React.Component {
   componentDidMount() {
     this.container = React.findDOMNode(this)
     //renderer
-    this.renderer = new THREE.WebGLRenderer();
+    this.renderer = new THREE.WebGLRenderer({
+      antialias: true,
+    });
     this.renderer.setSize(this.width, this.height);
     this.container.appendChild(this.renderer.domElement);
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
