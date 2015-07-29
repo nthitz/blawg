@@ -15,7 +15,7 @@ export default class Root extends React.Component {
       title: props.string
   }
   componentDidMount() {
-    animationManager.animate();
+    animationManager.startAnimation();
   }
   render () {
 

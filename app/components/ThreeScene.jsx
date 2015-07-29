@@ -54,10 +54,10 @@ export default class ThreeScene extends React.Component {
     // TODO maybe move to didMount() and then make sure to remove in unmount() !!!
   }
 
-  _animate() {
+  _animate(time) {
     this.renderer.render(this.scene, this.camera);
 
-    this.props.animate();
+    this.props.animate(time);
   }
   render() {
     return <div></div>
