@@ -37,7 +37,7 @@ export default class HelloWorldScene extends React.Component {
   }
   render() {
     return <div>
-      <ThreeScene ref="scene" init={this.init} animate={this.animate} {...this.props} title="Hello World" />
+      <ThreeScene ref="scene" init={this.init} animate={this.animate} {...this.props} />
     </div>
   }
 }
