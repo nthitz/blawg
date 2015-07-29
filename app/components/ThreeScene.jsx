@@ -24,7 +24,7 @@ export default class ThreeScene extends React.Component {
     // this.projectorprojector = new THREE.Projector(),
     this.mouse_vector = new THREE.Vector3(),
     this.mouse = { x: 0, y: 0, z: 1 },
-    this.ray = new THREE.Raycaster( new THREE.Vector3(0,0,0), new THREE.Vector3(0,0,0) ),
+    this.ray = new THREE.Raycaster(new THREE.Vector3(0,0,0), new THREE.Vector3(0,0,0)),
     this.intersects = [];
 
     //camera
@@ -35,9 +35,9 @@ export default class ThreeScene extends React.Component {
     //create the scene and add the objects that we created
     this.scene = new THREE.Scene();
     this.scene.add(this.camera);
-
-    this.scene.fog = new THREE.FogExp2( 0xaaaaaa, 0.0025 );
-
+    if (this.props.fog) {
+      this.scene.fog = new THREE.FogExp2(0xaaaaaa, 0.0025);
+    }
     this._animate = this._animate.bind(this)
   }
   componentDidMount() {
@@ -66,12 +66,14 @@ export default class ThreeScene extends React.Component {
 ThreeScene.propTypes = {
   dimensions: React.PropTypes.number,
   init: React.PropTypes.func,
-  animate: React.PropTypes.func
+  animate: React.PropTypes.func,
+  fog: React.PropTypes.bool,
 };
 
 ThreeScene.defaultProps = {
   dimensions: 400,
   // TODO rename init, animate. names are confusing because they are callbacks really.
   init: function() {},
-  animate: function() {}
+  animate: function() {},
+  fog: false,
 };

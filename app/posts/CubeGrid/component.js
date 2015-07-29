@@ -73,7 +73,7 @@ export default class CubeGrid extends React.Component {
   }
   render() {
     return <div>
-      <ThreeScene ref="scene" init={this.init} animate={this.animate} {...this.props} />
+      <ThreeScene fog ref="scene" init={this.init} animate={this.animate} {...this.props} />
     </div>
   }
 }
