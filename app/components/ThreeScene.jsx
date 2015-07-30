@@ -49,6 +49,7 @@ export default class ThreeScene extends React.Component {
     this.renderer.setSize(this.width, this.height);
     this.container.appendChild(this.renderer.domElement);
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    this.controls.noZoom = true;
   }
   init() {
     this.props.init();
