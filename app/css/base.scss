@@ -18,3 +18,30 @@ a {
   margin: 0 auto;
 
 }
+
+.canvasScene {
+  position: relative;
+
+  .zoomControls {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0em;
+    div {
+      background: rgba(0,0,0,0.4);
+      line-height: 0.6em;
+      padding: 0.5em;
+      cursor: pointer;
+      margin: 0.5em;
+      &:first-child {
+      }
+    }
+  }
+  &:hover {
+    .zoomControls {
+      opacity: 1;
+    }
+  };
+}
+

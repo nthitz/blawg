@@ -4,7 +4,7 @@ var OrbitControls = require('three-orbit-controls')(THREE);
 var _ = require('lodash');
 
 var animationManager = require('../utils/animationManager.js')
-
+var ZoomControls = require('./ZoomControls.jsx');
 var VIEW_ANGLE = 45, NEAR = 0.1, FAR = 10000;
 export default class ThreeScene extends React.Component {
   constructor(props) {
@@ -42,14 +42,17 @@ export default class ThreeScene extends React.Component {
   }
   componentDidMount() {
     this.container = React.findDOMNode(this)
-    //renderer
+
     this.renderer = new THREE.WebGLRenderer({
       antialias: true,
     });
     this.renderer.setSize(this.width, this.height);
-    this.container.appendChild(this.renderer.domElement);
+
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.noZoom = true;
+    this.refs.zoomControls.setControls(this.controls);
+
+    this.container.appendChild(this.renderer.domElement);
   }
   init() {
     this.props.init();
@@ -63,7 +66,10 @@ export default class ThreeScene extends React.Component {
     this.props.animate(time);
   }
   render() {
-    return <div></div>
+    console.log('render');
+    return <div className="canvasScene">
+      <ZoomControls ref="zoomControls" />
+    </div>
   }
 }
 ThreeScene.propTypes = {
