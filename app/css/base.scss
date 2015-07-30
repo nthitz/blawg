@@ -1,0 +1,20 @@
+html,body {
+  background: #051005;
+  color: #c5cfc5;
+  font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  color: #74d974;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.wrapper {
+  width: 400px;
+  margin: 0 auto;
+
+}

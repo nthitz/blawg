@@ -2,11 +2,12 @@
 import React  from 'react'
 import Router from 'react-router'
 import Header from './Header.jsx'
-import css    from '../css/base.css'
+import css    from '../css/base.scss'
 
 import animationManager from '../utils/animationManager.js'
 
 let RouteHandler = Router.RouteHandler
+
 
 export default class Root extends React.Component {
 
@@ -27,12 +28,15 @@ export default class Root extends React.Component {
       <html>
         <head>
           <title>{this.props.title}</title>
+          <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'/>
           <style dangerouslySetInnerHTML={{ __html: css }} />
           <meta charSet="utf-8" />
         </head>
-        <body className='p2'>
-          <Header {...this.props} />
-          <RouteHandler {...this.props} />
+        <body>
+          <div className="wrapper">
+            <Header {...this.props} />
+            <RouteHandler {...this.props} />
+          </div>
           <script
             id='initial-props'
             type='application/json'

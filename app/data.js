@@ -1,5 +1,4 @@
 var _ = require('lodash');
-var cssnext = require('cssnext');
 
 var fs = require('fs');
 

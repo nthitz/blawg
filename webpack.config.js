@@ -20,11 +20,14 @@ module.exports = {
         { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
         { test: /\.jsx$/, exclude: /node_modules/, loader: 'babel-loader' },
         {
-          test: /\.css/,
-          exclude: /colors\.css/,
-          loader: 'css-loader!cssnext-loader'
-        }
-      ]
+          test: /\.scss$/,
+          loaders: [
+            "css-loader",
+            "autoprefixer-loader?browsers=last 2 version",
+            "sass-loader"
+          ],
+        },
+      ],
     },
 
   plugins: [
@@ -34,14 +37,5 @@ module.exports = {
       new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
     )
   ],
-
-  cssnext: {
-    compress: true,
-    features: {
-      rem: false,
-      pseudoElements: false,
-      colorRgba: false
-    }
-  }
 
 }
