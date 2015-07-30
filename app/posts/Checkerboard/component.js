@@ -92,15 +92,19 @@ export default class CheckerboardScene extends React.Component {
         offsetX = - offsetX;
       }
 
-      tile.rotation.z = timeNormal * 2 * Math.PI;
+      tile.rotation.x = timeNormal * this.props.rotation.x * Math.PI;
+      tile.rotation.y = timeNormal * this.props.rotation.y * Math.PI;
+      tile.rotation.z = timeNormal * this.props.rotation.z * Math.PI;
 
-      this.positionForGrid(
-        tile.userData.x,
-        tile.userData.y,
-        tile.position,
-        offsetX,
-        offsetY
-      );
+      if(this.props.swapPositions) {
+        this.positionForGrid(
+          tile.userData.x,
+          tile.userData.y,
+          tile.position,
+          offsetX,
+          offsetY
+        );
+      }
 
 
 
@@ -116,6 +120,18 @@ function clamp01(value) {
   return Math.max(Math.min(1,value),0);
 }
 CheckerboardScene.propTypes = {
+  rotation: React.PropTypes.shape({
+    x: React.PropTypes.number,
+    y: React.PropTypes.number,
+    z: React.PropTypes.number,
+  }),
+  swapPositions: React.PropTypes.bool,
 }
 CheckerboardScene.defaultProps = {
+  rotation: {
+    x: 0,
+    y: 0,
+    z: 2,
+  },
+  swapPositions: true,
 };
