@@ -28,9 +28,11 @@ export default class CheckerboardScene extends React.Component {
   }
   init() {
     var materials = {
-      white: new THREE.MeshLambertMaterial({
-        color: 0xf1f1f1,
-        emissive: 0xf1f1f1,
+      white: new THREE.MeshPhongMaterial({
+        color: 0xa1a1a1,
+        emissive: 0xc1d1c1,
+        specular: 0x99aa99,
+        shininess: 10,
         side: THREE.DoubleSide,
       }),
       black: new THREE.MeshLambertMaterial({
@@ -60,11 +62,11 @@ export default class CheckerboardScene extends React.Component {
     }, this)
 
 
-    var ambientLight = new THREE.AmbientLight(0x222222);
+    var ambientLight = new THREE.AmbientLight(0x223322);
     this.add(ambientLight);
 
-    var directionalLight = new THREE.SpotLight(0xffffff);
-    directionalLight.position.set(100, 40, 200)
+    var directionalLight = new THREE.SpotLight(0xccffcc);
+    directionalLight.position.set(0, -150, 100)
     this.add(directionalLight);
 
   }
@@ -120,8 +122,8 @@ export default class CheckerboardScene extends React.Component {
     this.cameraTween += (this.over ? 1 : -1) * 1/this.cameraTweenStepCount;
     this.cameraTween = clamp01(this.cameraTween);
     var eased = d3.ease('cubic-in-out')(this.cameraTween)
-    this.refs.scene.camera.position.z = 300 - eased * 280;
-    this.refs.scene.camera.position.y = -eased* 160;
+    this.refs.scene.camera.position.z = 300 - eased * 285;
+    this.refs.scene.camera.position.y = -eased* 150;
     this.refs.scene.camera.lookAt(new THREE.Vector3(0,0,0))
 
   }
@@ -136,7 +138,12 @@ export default class CheckerboardScene extends React.Component {
 
   render() {
     return <div onMouseOver={this.mouseover} onMouseOut={this.mouseout}>
-      <ThreeScene ref="scene" init={this.init} animate={this.animate} scrollOrbitControls={false} {...this.props} />
+      <ThreeScene ref="scene"
+        init={this.init}
+        animate={this.animate}
+        scrollOrbitControls={false}
+        clearColor={0x001100}
+        {...this.props} />
     </div>
   }
 }
