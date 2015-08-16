@@ -42,7 +42,7 @@ export default class CheckerboardScene extends React.Component {
       }),
     }
 
-    var plane = new THREE.PlaneGeometry(tileSize, tileSize);
+    var plane = new THREE.PlaneBufferGeometry(tileSize, tileSize);
 
     _.each(_.range(gridSize), function(gridX) {
       _.each(_.range(gridSize), function(gridY) {
