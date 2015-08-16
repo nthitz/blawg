@@ -1,6 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
-var THREE = require('threejs')
+import THREE from 'threejs'
+import d3 from 'd3'
 
 import ThreeScene from '../../components/ThreeScene.jsx'
 
@@ -15,6 +16,12 @@ export default class CheckerboardScene extends React.Component {
 
     this.init = this.init.bind(this)
     this.animate = this.animate.bind(this)
+    this.mouseover = this.mouseover.bind(this)
+    this.mouseout = this.mouseout.bind(this)
+
+    this.over = false;
+    this.cameraTweenStepCount = 100;
+    this.cameraTween = 0;
   }
   componentDidMount() {
     this.refs.scene.init()
@@ -109,10 +116,27 @@ export default class CheckerboardScene extends React.Component {
 
 
     }, this);
+
+    this.cameraTween += (this.over ? 1 : -1) * 1/this.cameraTweenStepCount;
+    this.cameraTween = clamp01(this.cameraTween);
+    var eased = d3.ease('cubic-in-out')(this.cameraTween)
+    this.refs.scene.camera.position.z = 300 - eased * 280;
+    this.refs.scene.camera.position.y = -eased* 160;
+    this.refs.scene.camera.lookAt(new THREE.Vector3(0,0,0))
+
   }
+
+  mouseover(event) {
+    this.over = true;
+  }
+
+  mouseout(event) {
+    this.over = false;
+  }
+
   render() {
-    return <div>
-      <ThreeScene ref="scene" init={this.init} animate={this.animate} {...this.props} />
+    return <div onMouseOver={this.mouseover} onMouseOut={this.mouseout}>
+      <ThreeScene ref="scene" init={this.init} animate={this.animate} scrollOrbitControls={false} {...this.props} />
     </div>
   }
 }

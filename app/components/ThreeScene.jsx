@@ -48,10 +48,11 @@ export default class ThreeScene extends React.Component {
     });
     this.renderer.setSize(this.width, this.height);
 
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    this.controls.noZoom = true;
-    this.refs.zoomControls.setControls(this.controls);
-
+    if(this.props.scrollOrbitControls) {
+      this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+      this.controls.noZoom = true;
+      this.refs.zoomControls.setControls(this.controls);
+    }
     this.container.appendChild(this.renderer.domElement);
   }
   init() {
@@ -67,9 +68,15 @@ export default class ThreeScene extends React.Component {
   }
   render() {
     console.log('render');
-    return <div className="canvasScene">
-      <ZoomControls ref="zoomControls" />
-    </div>
+    var controls = null;
+    if(this.props.scrollOrbitControls) {
+      controls = <ZoomControls ref="zoomControls" />
+    }
+    return (
+      <div className="canvasScene">
+        {controls}
+      </div>
+    );
   }
 }
 ThreeScene.propTypes = {
@@ -77,6 +84,7 @@ ThreeScene.propTypes = {
   init: React.PropTypes.func,
   animate: React.PropTypes.func,
   fog: React.PropTypes.bool,
+  scrollOrbitControls: React.PropTypes.bool,
 };
 
 ThreeScene.defaultProps = {
@@ -85,4 +93,5 @@ ThreeScene.defaultProps = {
   init: function() {},
   animate: function() {},
   fog: false,
+  scrollOrbitControls: true,
 };
