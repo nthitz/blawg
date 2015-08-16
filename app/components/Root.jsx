@@ -8,12 +8,12 @@ import animationManager from '../utils/animationManager.js'
 
 let RouteHandler = Router.RouteHandler
 
-
 export default class Root extends React.Component {
 
   constructor(props) {
-      super(props)
-      title: props.string
+    super(props)
+    title: props.string
+
   }
   componentDidMount() {
     animationManager.startAnimation();
@@ -31,6 +31,7 @@ export default class Root extends React.Component {
           <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'/>
           <style dangerouslySetInnerHTML={{ __html: css }} />
           <meta charSet="utf-8" />
+          <base href={this.props.base} />
         </head>
         <body>
           <div className="wrapper">
@@ -41,7 +42,7 @@ export default class Root extends React.Component {
             id='initial-props'
             type='application/json'
             dangerouslySetInnerHTML={initialProps} />
-          <script src='/bundle.js' />
+          <script src='bundle.js' />
         </body>
       </html>
     )

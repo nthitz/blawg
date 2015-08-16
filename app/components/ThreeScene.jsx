@@ -67,7 +67,6 @@ export default class ThreeScene extends React.Component {
     this.props.animate(time);
   }
   render() {
-    console.log('render');
     var controls = null;
     if(this.props.scrollOrbitControls) {
       controls = <ZoomControls ref="zoomControls" />
