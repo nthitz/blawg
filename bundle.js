@@ -23618,7 +23618,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Routes = _react2['default'].createElement(
 	  Route,
-	  { handler: _componentsRootJsx2['default'], path: '/t3posts/' },
+	  { handler: _componentsRootJsx2['default'], path: '/' },
 	  _react2['default'].createElement(Route, { path: '/', handler: _componentsIndexJsx2['default'] }),
 	  _react2['default'].createElement(Route, { path: '/about', handler: _componentsAboutJsx2['default'] }),
 	  _generatedRoutes_routesJsx2['default']
@@ -91710,8 +91710,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    _get(Object.getPrototypeOf(Root.prototype), 'constructor', this).call(this, props);
 	    title: props.string;
-
-	    console.log(props);
 	  }
 
 	  _createClass(Root, [{
