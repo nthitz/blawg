@@ -47,7 +47,7 @@ export default class ThreeScene extends React.Component {
       antialias: true,
     });
     this.renderer.setSize(this.width, this.height);
-
+    this.renderer.setClearColor(this.props.clearColor);
     if(this.props.scrollOrbitControls) {
       this.controls = new OrbitControls(this.camera, this.renderer.domElement);
       this.controls.noZoom = true;
@@ -85,6 +85,7 @@ ThreeScene.propTypes = {
   animate: React.PropTypes.func,
   fog: React.PropTypes.bool,
   scrollOrbitControls: React.PropTypes.bool,
+  clearColor: React.PropTypes.number,
 };
 
 ThreeScene.defaultProps = {
@@ -94,4 +95,5 @@ ThreeScene.defaultProps = {
   animate: function() {},
   fog: false,
   scrollOrbitControls: true,
+  clearColor: 0x000000,
 };
