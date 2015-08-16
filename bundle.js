@@ -23618,7 +23618,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Routes = _react2['default'].createElement(
 	  Route,
-	  { handler: _componentsRootJsx2['default'], path: '/' },
+	  { handler: _componentsRootJsx2['default'], path: '/deploy' },
 	  _react2['default'].createElement(Route, { path: '/', handler: _componentsIndexJsx2['default'] }),
 	  _react2['default'].createElement(Route, { path: '/about', handler: _componentsAboutJsx2['default'] }),
 	  _generatedRoutes_routesJsx2['default']
@@ -91739,7 +91739,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          _react2['default'].createElement('link', { href: 'http://fonts.googleapis.com/css?family=Open+Sans:400,700', rel: 'stylesheet', type: 'text/css' }),
 	          _react2['default'].createElement('style', { dangerouslySetInnerHTML: { __html: _cssBaseScss2['default'] } }),
 	          _react2['default'].createElement('meta', { charSet: 'utf-8' }),
-	          _react2['default'].createElement('base', { href: this.props.base })
+	          _react2['default'].createElement('base', { href: '/deploy/' })
 	        ),
 	        _react2['default'].createElement(
 	          'body',
