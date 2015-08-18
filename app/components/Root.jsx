@@ -31,7 +31,6 @@ export default class Root extends React.Component {
           <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'/>
           <style dangerouslySetInnerHTML={{ __html: css }} />
           <meta charSet="utf-8" />
-          <base href={this.props.base} />
         </head>
         <body>
           <div className="wrapper">

@@ -15,9 +15,9 @@ var defaultRoutes = [
 var routes = defaultRoutes.concat(_.map(generateRoutes, function(route) {
   return route.path;
 }));
-console.log(routes);
+
 module.exports = {
   title: 'My Static Site',
-  routes: routes
+  routes: routes,
 }
 
