@@ -9,6 +9,7 @@ import Pyramid from '../posts/Pyramid/component.js'
 import WireBall from '../posts/WireBall/component.js'
 import CubeGrid from '../posts/CubeGrid/component.js'
 import Checkerboard from '../posts/Checkerboard/component.js'
+import CubeExplode from '../posts/CubeExplode/component.js'
 
 var postDataMap = {};
 _.each(routeData.posts, function(post) {
@@ -20,6 +21,10 @@ export default class Index extends React.Component {
   render () {
     return (
       <main>
+
+        <Post data={postDataMap['CubeExplode']}>
+          <CubeExplode data={postDataMap['CubeExplode']} />
+        </Post>
         <Post data={postDataMap['Checkerboard']}>
           <Checkerboard data={postDataMap['Checkerboard']} />
         </Post>
