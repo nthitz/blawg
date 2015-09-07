@@ -30,6 +30,7 @@
     "d3": "^3.5.6",
     "jquery": "^2.1.4",
     "lodash": "^3.10.0",
+    "normalize.css": "^3.0.3",
     "three-orbit-controls": "^69.0.5"
   }
 }

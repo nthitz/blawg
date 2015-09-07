@@ -17,7 +17,7 @@ var routes = defaultRoutes.concat(_.map(generateRoutes, function(route) {
 }));
 
 module.exports = {
-  title: 'My Static Site',
+  title: 'nt3',
   routes: routes,
 }
 

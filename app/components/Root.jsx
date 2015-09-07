@@ -28,9 +28,10 @@ export default class Root extends React.Component {
       <html>
         <head>
           <title>{this.props.title}</title>
-          <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'/>
+          <link href='http://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700' rel='stylesheet' type='text/css'/>
           <style dangerouslySetInnerHTML={{ __html: css }} />
           <meta charSet="utf-8" />
+          <meta name="viewport" content="width=420, initial-scale=0.761904762" />
         </head>
         <body>
           <div className="wrapper">
